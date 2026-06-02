@@ -1,7 +1,18 @@
 # 🌐 LinguaFlow — Language Translation Tool
 
 > **CodeAlpha AI Internship · Task 1**
-> A beginner-friendly Python web app that translates text across 100+ languages using Google Translate — completely free, no API key required.
+> A beginner-friendly Python web app that translates text across 80+ languages using Google Translate — completely free, no API key required.
+
+---
+
+## 👩‍💻 About the Developer
+
+**Sehar Andleeb**
+🎓 BS Artificial Intelligence — 8th Semester
+💡 Passionate AI Engineer
+🏢 AI Intern @ [CodeAlpha](https://www.codealpha.tech/)
+
+This is my **first project** of the CodeAlpha AI Internship Program, built as Task 1: Language Translation Tool. I'm passionate about using AI and Python to build real-world tools that solve everyday problems.
 
 ---
 
@@ -9,12 +20,12 @@
 
 | Feature | Details |
 |---|---|
-| 🌍 100+ Languages | Full Google Translate language coverage |
+| 🌍 80+ Languages | Full Google Translate language coverage |
 | 🔍 Auto-Detect | Automatically detects the source language |
 | 📋 Copy Button | One-click copy of translated text |
-| ⚡ Real-time | Instant translation with loading feedback |
+| ⚡ Instant | Real-time translation with loading spinner |
 | 🛡️ Error Handling | Friendly messages for network & input errors |
-| 🎨 Modern UI | Clean dark theme built with custom CSS |
+| 🎨 Dark UI | Clean dark theme — no eye strain |
 
 ---
 
@@ -23,9 +34,13 @@
 ```
 language-translation-tool/
 │
-├── app.py              ← Main Streamlit application
-├── requirements.txt    ← Python dependencies
-└── README.md           ← This file
+├── .streamlit/
+│   └── config.toml       ← Forces dark theme (fixes text visibility)
+│
+├── app.py                ← Main Streamlit application
+├── requirements.txt      ← Python dependencies
+├── .gitignore            ← Git ignore rules
+└── README.md             ← This file
 ```
 
 ---
@@ -34,50 +49,36 @@ language-translation-tool/
 
 ### Step 1 — Make sure Python is installed
 
-Open your terminal (Command Prompt on Windows, Terminal on Mac/Linux) and run:
-
 ```bash
 python --version
 ```
 
-You should see something like `Python 3.9.x` or higher. If not, download Python from [python.org](https://www.python.org/downloads/).
+You need **Python 3.9 or higher**. Download from [python.org](https://www.python.org/downloads/) if needed.
 
 ---
 
-### Step 2 — Download / clone this project
+### Step 2 — Clone the repository
 
-**Option A — Download ZIP** (easiest for beginners):
-1. Download this project as a ZIP file
-2. Extract it to a folder on your Desktop (e.g. `language-translation-tool`)
-
-**Option B — Git clone**:
 ```bash
-git clone https://github.com/your-username/language-translation-tool.git
+git clone https://github.com/YOUR_USERNAME/language-translation-tool.git
 cd language-translation-tool
 ```
 
 ---
 
-### Step 3 — Create a virtual environment (recommended)
-
-A virtual environment keeps dependencies isolated from your system Python.
+### Step 3 — Create a virtual environment
 
 ```bash
-# Navigate into the project folder first
-cd language-translation-tool
-
-# Create virtual environment
 python -m venv venv
 
-# Activate it:
-# On Windows:
+# Activate on Windows:
 venv\Scripts\activate
 
-# On Mac / Linux:
+# Activate on Mac / Linux:
 source venv/bin/activate
 ```
 
-You'll see `(venv)` at the start of your terminal line — that means it's active ✅
+You'll see `(venv)` in your terminal — that means it's active ✅
 
 ---
 
@@ -87,11 +88,6 @@ You'll see `(venv)` at the start of your terminal line — that means it's activ
 pip install -r requirements.txt
 ```
 
-This installs:
-- `streamlit` — the web UI framework
-- `deep-translator` — free Google Translate wrapper (no API key needed)
-- `pyperclip` — clipboard support for the Copy button
-
 ---
 
 ### Step 5 — Run the app
@@ -100,17 +96,18 @@ This installs:
 streamlit run app.py
 ```
 
-Your browser will automatically open at **http://localhost:8501** 🎉
+Your browser will open automatically at **http://localhost:8501** 🎉
 
 ---
 
-### Step 6 — Use the app
+## 🎮 How to Use
 
-1. **Select source language** — choose the language of your input text (or leave as *Auto Detect*)
-2. **Select target language** — choose the language you want to translate into
+1. **Select source language** — choose the input language or leave as *Auto Detect*
+2. **Select target language** — choose the language to translate into
 3. **Type or paste** your text in the input box
 4. Click **🌐 Translate**
-5. Your translation appears below — click **📋 Copy Translation** to copy it
+5. Your translation appears below
+6. Click **📋 Copy Translation** to copy it
 
 ---
 
@@ -119,10 +116,10 @@ Your browser will automatically open at **http://localhost:8501** 🎉
 | Problem | Fix |
 |---|---|
 | `ModuleNotFoundError` | Run `pip install -r requirements.txt` again |
-| `streamlit: command not found` | Make sure your venv is activated |
-| Copy button doesn't work | On some Linux systems, install `xclip`: `sudo apt install xclip` |
-| Translation fails | Check your internet connection (Google Translate requires network access) |
-| Blank page in browser | Try refreshing or opening `http://localhost:8501` manually |
+| `streamlit: command not found` | Activate your virtual environment first |
+| Text is invisible in input box | Make sure `.streamlit/config.toml` exists in the project folder |
+| Translation fails | Check your internet connection (requires network access) |
+| Blank page in browser | Refresh or open `http://localhost:8501` manually |
 
 ---
 
@@ -131,8 +128,16 @@ Your browser will automatically open at **http://localhost:8501** 🎉
 | Library | Purpose | Cost |
 |---|---|---|
 | [Streamlit](https://streamlit.io) | Web UI framework | Free & open-source |
-| [deep-translator](https://github.com/nidhaloff/deep-translator) | Translation engine | Free (no API key) |
-| [pyperclip](https://github.com/asweigart/pyperclip) | Clipboard access | Free & open-source |
+| [deep-translator](https://github.com/nidhaloff/deep-translator) | Google Translate wrapper | Free, no API key |
+
+---
+
+## 📦 Dependencies
+
+```
+streamlit>=1.32.0
+deep-translator>=1.11.4
+```
 
 ---
 
@@ -147,15 +152,22 @@ GoogleTranslator(source=..., target=...).translate(text)
       ↓
 deep-translator calls Google Translate (free tier)
       ↓
-Translation result displayed in the UI
+Translation displayed in the result box
       ↓
-User can copy with one click
+User copies with one click
 ```
 
 ---
 
-## 🤝 About
+## 🏢 Internship Details
 
-Made as part of the **CodeAlpha AI Internship Program** — Task 1: Language Translation Tool.
+| | |
+|---|---|
+| **Program** | CodeAlpha AI Internship |
+| **Task** | Task 1 — Language Translation Tool |
+| **Intern** | Sehar Andleeb |
+| **Degree** | BS Artificial Intelligence (8th Semester) |
 
-> This project is intentionally kept simple and beginner-friendly. No paid APIs, no complex setup, no databases — just Python, Streamlit, and Google Translate.
+---
+
+*Built with ❤️ by Sehar Andleeb — CodeAlpha AI Intern*
